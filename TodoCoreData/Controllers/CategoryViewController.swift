@@ -6,13 +6,15 @@
 //  Copyright © 2020 J. All rights reserved.
 //
 
-import UIKit
-import CoreData
 
-class CategoryViewController: UITableViewController {
-    var categoryArray = [Category]()
+import UIKit
+import RealmSwift
+import ChameleonFramework
+
+class CategoryViewController: SwipeTableViewController {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let realm = try! Realm()
+    var categories: Results<Category>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,17 +25,53 @@ class CategoryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return categoryArray.count
+        return categories?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        if let category = categories?[indexPath.row] {
+            cell.textLabel?.text = category.name ?? "No categories added yet"
+            cell.backgroundColor = UIColor(hexString: category.color ?? "1D9BF6")
+        }
         
-        let category = categoryArray[indexPath.row]
-        cell.textLabel?.text = category.name
         return cell
     }
     
+    
+    //Mark: - Data Manipulation Methods
+    
+    func save(category: Category) {
+        do {
+            try realm.write {
+                realm.add(category)
+            }
+        } catch {
+            print("Error saving context,\(error)")
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+    func loadCategories() {
+        categories = realm.objects(Category.self)
+        tableView.reloadData()
+    }
+    
+    
+    //Mark: - Delete Data from Swipe
+    
+    override func updateModel(at indexPath: IndexPath) {
+        if let categoryForDeletion = self.categories?[indexPath.row] {
+            do {
+                try self.realm.write {
+                    self.realm.delete(categoryForDeletion)
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
     
     //Mark: - Add New Categories
     
@@ -42,10 +80,11 @@ class CategoryViewController: UITableViewController {
         let alert = UIAlertController(title: "Add New Todoey Category", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add Category", style: .default) { (action) in
-            let newCategory = Category(context: self.context)
-            newCategory.name = textField.text!
-            self.categoryArray.append(newCategory)
-            self.saveCategories()
+            let newCategory = Category()
+            newCategory.name =  textField.text!
+            newCategory.color = UIColor.randomFlat().hexValue()
+            
+            self.save(category: newCategory)
         }
         
         alert.addTextField { (alerTextField) in
@@ -55,27 +94,6 @@ class CategoryViewController: UITableViewController {
         
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
-    }
-    
-    //Mark: - Data Manipulation Methods
-    
-    func saveCategories() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context,\(error)")
-        }
-        
-        self.tableView.reloadData()
-    }
-    
-    func loadCategories() {
-        let request: NSFetchRequest<Category> = Category.fetchRequest()
-        do {
-            categoryArray = try context.fetch(request)
-        } catch {
-            print("Error loading cateogires \(error)")
-        }
     }
     
     
@@ -88,8 +106,7 @@ class CategoryViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! TodoListViewController
         if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.selectedCategory = categoryArray[indexPath.row]
+            destinationVC.selectedCategory = categories?[indexPath.row]
         }
     }
-    
 }

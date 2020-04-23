@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18C93880FE19868164880761 /* Pods_TodoCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9A43CE9493A56A3929D21D /* Pods_TodoCoreData.framework */; };
+		4923F00C24522A550096603A /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4923F00B24522A550096603A /* SwipeTableViewController.swift */; };
 		49386E7D2450F60C00250407 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49386E7C2450F60C00250407 /* TodoListViewController.swift */; };
 		49386E842450F82700250407 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49386E832450F82700250407 /* CategoryViewController.swift */; };
 		4950D2CB2450FF9900AD097D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4950D2CA2450FF9900AD097D /* Item.swift */; };
@@ -15,7 +16,6 @@
 		49E84A9A244FEFA300B82865 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E84A99244FEFA300B82865 /* AppDelegate.swift */; };
 		49E84A9C244FEFA300B82865 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E84A9B244FEFA300B82865 /* SceneDelegate.swift */; };
 		49E84AA1244FEFA300B82865 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E84A9F244FEFA300B82865 /* Main.storyboard */; };
-		49E84AA4244FEFA300B82865 /* TodoCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49E84AA2244FEFA300B82865 /* TodoCoreData.xcdatamodeld */; };
 		49E84AA6244FEFA500B82865 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E84AA5244FEFA500B82865 /* Assets.xcassets */; };
 		49E84AA9244FEFA500B82865 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E84AA7244FEFA500B82865 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -23,6 +23,7 @@
 /* Begin PBXFileReference section */
 		3D9A43CE9493A56A3929D21D /* Pods_TodoCoreData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoCoreData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4476C8D6150AF1421F23F3BC /* Pods-TodoCoreData.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoCoreData.release.xcconfig"; path = "Target Support Files/Pods-TodoCoreData/Pods-TodoCoreData.release.xcconfig"; sourceTree = "<group>"; };
+		4923F00B24522A550096603A /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		49386E7C2450F60C00250407 /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
 		49386E832450F82700250407 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		4950D2CA2450FF9900AD097D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -31,7 +32,6 @@
 		49E84A99244FEFA300B82865 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49E84A9B244FEFA300B82865 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		49E84AA0244FEFA300B82865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		49E84AA3244FEFA300B82865 /* TodoCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TodoCoreData.xcdatamodel; sourceTree = "<group>"; };
 		49E84AA5244FEFA500B82865 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49E84AA8244FEFA500B82865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49E84AAA244FEFA500B82865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,8 +70,9 @@
 		49386E7B2450F4B600250407 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				49386E7C2450F60C00250407 /* TodoListViewController.swift */,
+				4923F00B24522A550096603A /* SwipeTableViewController.swift */,
 				49386E832450F82700250407 /* CategoryViewController.swift */,
+				49386E7C2450F60C00250407 /* TodoListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -79,7 +80,6 @@
 		4950D2C52450FA3E00AD097D /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				49E84AA2244FEFA300B82865 /* TodoCoreData.xcdatamodeld */,
 				4950D2CA2450FF9900AD097D /* Item.swift */,
 				4950D2CC2451000E00AD097D /* Category.swift */,
 			);
@@ -252,8 +252,8 @@
 			files = (
 				49386E842450F82700250407 /* CategoryViewController.swift in Sources */,
 				49E84A9A244FEFA300B82865 /* AppDelegate.swift in Sources */,
-				49E84AA4244FEFA300B82865 /* TodoCoreData.xcdatamodeld in Sources */,
 				49E84A9C244FEFA300B82865 /* SceneDelegate.swift in Sources */,
+				4923F00C24522A550096603A /* SwipeTableViewController.swift in Sources */,
 				4950D2CB2450FF9900AD097D /* Item.swift in Sources */,
 				49386E7D2450F60C00250407 /* TodoListViewController.swift in Sources */,
 				4950D2CD2451000E00AD097D /* Category.swift in Sources */,
@@ -332,7 +332,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -386,7 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -402,6 +402,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2RH2V33K5A;
 				INFOPLIST_FILE = TodoCoreData/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -420,6 +421,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2RH2V33K5A;
 				INFOPLIST_FILE = TodoCoreData/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -454,19 +456,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		49E84AA2244FEFA300B82865 /* TodoCoreData.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				49E84AA3244FEFA300B82865 /* TodoCoreData.xcdatamodel */,
-			);
-			currentVersion = 49E84AA3244FEFA300B82865 /* TodoCoreData.xcdatamodel */;
-			path = TodoCoreData.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 49E84A8E244FEFA300B82865 /* Project object */;
 }
